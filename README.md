@@ -1,5 +1,5 @@
 # pk2-pg
-Passkeeper2 postgresql server:
+Passkeeper2 app server:
 
 https://cloud.digitalocean.com
 
@@ -15,7 +15,7 @@ Choices:
     Private networking
     SSH keys: root-laptop, loco-laptop
     1 Droplet: pk2-db
-    Add Tags: passkeeper2, dbserv
+    Add Tags: passkeeper2, appserv
 
 #### Then:
 
@@ -46,7 +46,8 @@ SSH to loco@<server-ipaddress>
 
     cd /opt/pk2-pg
 
-    sudo ./scripts/postgres.sh
+    sudo ./scripts/ruby.sh
+    sudo ./scripts/rails.sh
     sudo ./scripts/iptables.sh
 
 ### config_server.sh
@@ -59,13 +60,18 @@ This script does the initial setup of the server.
 * SSH root login is disallowed.
 * sshd is restarted and enabled for start at boot.
 
-### postgres.sh
+### ruby.sh
 
-Set up postgresql
+Set up ruby
 
-* Install postgresql
-* Install our pg_hba.conf
-* Restart postgresql and set to start on reboot
+* Install ruby
+* Add Bundler
+
+### rails.sh
+
+Set up rails
+
+* Install rails
 
 ### iptables.sh
 
