@@ -19,6 +19,9 @@
  iptables -N wan_out
  iptables -N lan_in
  iptables -N lan_out
+
+ iptables -N ssh_in
+
  iptables -N dns_in
  iptables -N dns_out
  iptables -N dhcp_in
@@ -42,7 +45,6 @@
 
  # WAN In chain #############################
  # Server
- iptables -A wan_in -p tcp --dport 3000 -m state --state NEW,ESTABLISHED -j ACCEPT
  iptables -A wan_in -p tcp --dport 22    -j ssh_in
  # Client
  iptables -A wan_in -p tcp --sport 53    -j dns_in
@@ -52,7 +54,10 @@
  # Logging
  iptables -A wan_in -j logging
 
- # LAN In ##################################
+ # LAN In chain ############################
+ # Server
+ iptables -A lan_in -p tcp --dport 3000          -j ACCEPT
+ # Client
  iptables -A lan_in -m state --state ESTABLISHED -j ACCEPT
  iptables -A lan_in -p icmp                      -j icmp_in
  # Logging
@@ -68,10 +73,10 @@
  # Server
  iptables -A wan_out -m state --state ESTABLISHED -j ACCEPT
  # Client
- iptables -A wan_out -p tcp --dport 53    -j dns_out
- iptables -A wan_out -p udp --dport 53    -j dns_out
- iptables -A wan_out -p udp --dport 67:68 -j dhcp_out
- iptables -A wan_out -p udp --dport 123   -j ntp_out
+ iptables -A wan_out -p tcp --dport 53            -j dns_out
+ iptables -A wan_out -p udp --dport 53            -j dns_out
+ iptables -A wan_out -p udp --dport 67:68         -j dhcp_out
+ iptables -A wan_out -p udp --dport 123           -j ntp_out
  # Logging
  iptables -A wan_out -j logging
 
@@ -79,8 +84,8 @@
  # Server
  iptables -A lan_out -m state --state ESTABLISHED -j ACCEPT
  # Client
- iptables -A lan_out -p tcp --dport 5432 -j ACCEPT
- iptables -A lan_out -p icmp             -j icmp_out
+ iptables -A lan_out -p tcp --dport 5432          -j ACCEPT
+ iptables -A lan_out -p icmp                      -j icmp_out
  #Logging
  iptables -A lan_out -j logging
 
