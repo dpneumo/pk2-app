@@ -82,7 +82,7 @@
  iptables -A lan_out -p tcp --dport 5432 -j ACCEPT
  iptables -A lan_out -p icmp             -j icmp_out
  #Logging
- iptables -A wan_out -j logging
+ iptables -A lan_out -j logging
 
 
 # FORWARD chain ############################
