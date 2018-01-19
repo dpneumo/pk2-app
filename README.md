@@ -1,4 +1,4 @@
-# pk2-pg
+# pk2-app
 Passkeeper2 app server:
 
 https://cloud.digitalocean.com
