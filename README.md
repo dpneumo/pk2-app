@@ -29,7 +29,7 @@ SSH to root@<server-ipaddress>
     git config --global push.default simple
 
     cd /opt &&
-    git clone https://github.com/dpneumo/pk2-pg.git
+    git clone https://github.com/dpneumo/pk2-app.git
 
     cd pk2-pg &&
     chmod 755 *.sh
