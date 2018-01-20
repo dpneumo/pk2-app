@@ -31,8 +31,8 @@ SSH to root@<server-ipaddress>
     cd /opt &&
     git clone https://github.com/dpneumo/pk2-app.git
 
-    cd pk2-pg &&
-    chmod 755 *.sh
+    cd pk2-app &&
+    chmod 755 **/*.sh
 
     git update-index --add --chmod=+x *.sh
     git commit -m "make our scripts executable and tell git about it"
@@ -44,7 +44,7 @@ SSH to root@<server-ipaddress>
 
 SSH to loco@<server-ipaddress>
 
-    cd /opt/pk2-pg
+    cd /opt/pk2-app
 
     sudo ./scripts/ruby.sh
     sudo ./scripts/rails.sh
