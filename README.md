@@ -14,7 +14,7 @@ Choices:
     Datacenter NYC1
     Private networking
     SSH keys: root-laptop, loco-laptop
-    1 Droplet: pk2-db
+    1 Droplet: pk2-app
     Add Tags: passkeeper2, appserv
 
 #### Then:
@@ -38,7 +38,7 @@ SSH to root@<server-ipaddress>
     git commit -m "make our scripts executable and tell git about it"
     git push
 
-    ./config_server.sh
+    ./config_server.sh  # Will ask for new password for user 'loco'
 
     exit
 
