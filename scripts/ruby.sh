@@ -13,6 +13,7 @@ iptables -D wan_out -p tcp --dport 80  -m state --state NEW,ESTABLISHED -j ACCEP
 
 
 # rbenv
+sudo -u loco rm -rf /home/loco/.rbenv
 sudo -u loco git clone https://github.com/rbenv/rbenv.git /home/loco/.rbenv
 sudo -u loco cd /home/loco/.rbenv
 sudo -u loco src/configure && make -C src
