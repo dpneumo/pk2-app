@@ -48,7 +48,7 @@
  iptables -A wan_in  -s $MAN_IP -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
  iptables -A wan_out -d $MAN_IP -p tcp --sport 22 -m state --state ESTABLISHED     -j ACCEPT
 
- # HTTP Server - temporary for testing
+ # HTTP Server (Rails) - temporary for testing
  #iptables -A wan_in  -s $MAN_IP -p tcp --dport 3000 -m state --state NEW,ESTABLISHED -j ACCEPT
  #iptables -A wan_out -d $MAN_IP -p tcp --sport 3000 -m state --state ESTABLISHED     -j ACCEPT
 
