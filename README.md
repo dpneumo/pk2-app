@@ -34,21 +34,23 @@ SSH to root@<server-ipaddress>
     cd pk2-app &&
     chmod 755 **/*.sh
 
-    git update-index --add --chmod=+x *.sh
+    git update-index --add --chmod=+x **/*.sh
     git commit -m "make our scripts executable and tell git about it"
     git push
 
     ./config_server.sh  # Will ask for new password for user 'loco'
+
+    cd ..
+    chown -Rf loco:loco pk2-app
 
     exit
 
 SSH to loco@<server-ipaddress>
 
     cd /opt/pk2-app
-
-    sudo ./scripts/ruby.sh
-    sudo ./scripts/rails.sh
     sudo ./scripts/iptables.sh
+    ./scripts/ruby.sh
+    ./scripts/rails.sh
 
 ### config_server.sh
 
