@@ -10,10 +10,10 @@ sudo sh -c "
   yum install -y gcc bzip2 openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel"
 
 
-
 # rbenv
 rm -rf ~/.rbenv && git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 cd ~/.rbenv && src/configure && make -C src
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
 source ~/.bash_profile
 
@@ -23,6 +23,7 @@ git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-b
 
 # Install Ruby 2.4.0;
 rbenv install 2.4.0
+rbenv rehash
 
 
 # Remove HTTP & HTTPS Client rules
