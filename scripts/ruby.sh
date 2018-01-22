@@ -24,6 +24,7 @@ git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-b
 # Install Ruby 2.4.0;
 rbenv install 2.4.0
 rbenv rehash
+gem install bundler
 
 
 # Remove HTTP & HTTPS Client rules
