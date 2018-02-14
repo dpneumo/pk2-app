@@ -21,18 +21,11 @@ Choices:
 
 SSH to root@<server-ipaddress>
 
-    yum -y update &&
-    yum install -y git
+    yum -y update && yum install -y git
 
-    git config --global user.email "you@example.com"
-    git config --global user.name "Your Name"
-    git config --global push.default simple
+    cd /opt && git clone https://github.com/dpneumo/pk2-app.git
 
-    cd /opt &&
-    git clone https://github.com/dpneumo/pk2-app.git
-
-    cd pk2-app &&
-    chmod 755 **/*.sh
+    cd pk2-app && chmod 755 **/*.sh
 
     git update-index --add --chmod=+x **/*.sh
     git commit -m "make our scripts executable and tell git about it"
@@ -40,20 +33,12 @@ SSH to root@<server-ipaddress>
 
     ./config_server.sh  # Will ask for new password for user 'loco'
 
-    cd ..
-    chown -R loco:loco pk2-app
-
     exit
 
 SSH to loco@<server-ipaddress>
 
-    cd /opt/pk2-app
-
-    git config --global user.email "you@example.com"
-    git config --global user.name "Your Name"
-    git config --global push.default simple
-
     sudo ./scripts/iptables.sh
+    ./scripts/git.sh
     ./scripts/ruby.sh
     ./scripts/rails.sh
 
@@ -66,6 +51,10 @@ This script does the initial setup of the server.
 * SSH is setup to allow key authentication and disallow password authentication.
 * SSH root login is disallowed.
 * sshd is restarted and enabled for start at boot.
+
+### git.sh
+
+Initialize git for the loco user
 
 ### ruby.sh
 

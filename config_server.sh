@@ -6,7 +6,7 @@
 
 # Script:
 yum update -y
-yum install -y nano expect tcl
+yum install -y nano expect tcl mlocate
 
 # Create user: loco with sudo priv
 useradd loco
@@ -35,3 +35,10 @@ echo "Updated sshd configuration"
 systemctl reload sshd
 systemctl enable sshd
 echo "Reloaded sshd"
+
+# git global env vars will be set for each user
+cat data/git_global_env_vars > /etc/profile.d/git.sh
+chmod 0755 /etc/profile.d/git.sh
+
+# The pk2-app should be owned by loco
+chown -R loco:loco /opt/pk2-app
