@@ -21,10 +21,12 @@ source ~/.bash_profile
 rm -rf "$(rbenv root)"/plugins && mkdir -p "$(rbenv root)"/plugins
 git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
 
-# Install Ruby 2.4.0;
-rbenv install 2.4.0
+# Install Ruby 2.5.0;
+rbenv install 2.5.0
+rbenv global 2.5.0
 rbenv rehash
 gem install bundler
+rbenv rehash
 
 
 # Remove HTTP & HTTPS Client rules
