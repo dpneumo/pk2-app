@@ -22,8 +22,11 @@ rm -rf "$(rbenv root)"/plugins && mkdir -p "$(rbenv root)"/plugins
 git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
 
 # Install Ruby 2.5.0
-if [ ! -e /home/loco/.rbenv/versions/2.5.0/bin/ruby ]
-  then rbenv install 2.5.0
+if [ -e /home/loco/.rbenv/versions/2.5.0/bin/ruby ]
+  then
+    echo "Ruby 2.5.0 already installed by rbenv."
+  else
+    rbenv install 2.5.0
 fi
 rbenv global 2.5.0
 rbenv rehash
