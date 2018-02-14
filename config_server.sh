@@ -9,7 +9,7 @@ yum update -y
 yum install -y nano expect tcl mlocate
 
 # Setup a new user for ssh login
-if sudo -u <user> whoami > /dev/null
+if sudo -u loco whoami > /dev/null;
 then
   echo "User loco already exists. Set up manually."
 else
@@ -47,4 +47,4 @@ fi
 
 # git global env vars will be set for each user
 cat data/git_global_env_vars > /etc/profile.d/git.sh
-chmod 0755 /etc/profile.d/git.sh
+chmod 0644 /etc/profile.d/git.sh
