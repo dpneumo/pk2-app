@@ -41,13 +41,18 @@ SSH to root@<server-ipaddress>
     ./config_server.sh  # Will ask for new password for user 'loco'
 
     cd ..
-    chown -Rf loco:loco pk2-app
+    chown -R loco:loco pk2-app
 
     exit
 
 SSH to loco@<server-ipaddress>
 
     cd /opt/pk2-app
+
+    git config --global user.email "you@example.com"
+    git config --global user.name "Your Name"
+    git config --global push.default simple
+
     sudo ./scripts/iptables.sh
     ./scripts/ruby.sh
     ./scripts/rails.sh
