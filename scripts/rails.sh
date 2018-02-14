@@ -1,9 +1,9 @@
 sudo yum groupinstall 'Development Tools'
 
 cd ~
-git clone https://github.com/dpneumo/passkeeper2.git
+git clone https://github.com/dpneumo/pk2.git
 
-cd passkeeper2
+cd pk2
 bundle install
 
 

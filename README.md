@@ -39,7 +39,7 @@ SSH to loco@<server-ipaddress>
 
     sudo ./scripts/iptables.sh
     ./scripts/git.sh
-    ./scripts/ruby.sh
+    ./scripts/ruby.sh  # Will ask for password for user 'loco' @ start AND @ end.
     ./scripts/rails.sh
 
 ### config_server.sh
