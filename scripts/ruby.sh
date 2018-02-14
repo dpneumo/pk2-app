@@ -23,13 +23,12 @@ git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-b
 
 # Install Ruby 2.5.0
 if [ ! -e /home/loco/.rbenv/versions/2.5.0/bin/ruby ]
-  then
-    rbenv install 2.5.0
-    rbenv global 2.5.0
-    rbenv rehash
-    gem install bundler
-    rbenv rehash
+  then rbenv install 2.5.0
 fi
+rbenv global 2.5.0
+rbenv rehash
+gem install bundler
+rbenv rehash
 
 # Remove HTTP & HTTPS Client rules
 sudo sh -c "
