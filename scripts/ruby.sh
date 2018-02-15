@@ -13,7 +13,7 @@ sudo sh -c "
 
 
 # rbenv
-RBENV='/home/loco/.rbenv'
+RBENV="$HOME/.rbenv"
 if [ -d "$RBENV" ]; then
   echo "rbenv is already installed."
 else
@@ -26,17 +26,17 @@ fi
 
 
 # ruby-build as rbenv plugin
-RUBYBUILD="$(rbenv root)"/plugins/ruby-build
+RUBYBUILD="$RBENV/plugins/ruby-build"
 if [ -d "$RUBYBUILD" ]; then
   echo "ruby-build plugin is already installed."
 else
-  mkdir -p "$(rbenv root)"/plugins
+  mkdir -p "$RUBYBUILD/plugins"
   git clone https://github.com/rbenv/ruby-build.git "$RUBYBUILD"
 fi
 
 
 # Install Ruby 2.5.0
-RUBY250='/home/loco/.rbenv/versions/2.5.0/bin/ruby'
+RUBY250="$RBENV/versions/2.5.0/bin/ruby"
 if [ -e "$RUBY250" ]; then
   echo "Ruby 2.5.0 already installed by rbenv."
 else
