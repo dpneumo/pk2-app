@@ -1,15 +1,16 @@
 #!/bin/bash
 
-# Add HTTP & HTTPS Client rules - temporary for yum
+# Add HTTP & HTTPS Client rules - temporary for yum & git
 sudo sh -c "
   iptables -A wan_in  -p tcp --sport 80  -m state --state ESTABLISHED     -j ACCEPT;
   iptables -A wan_out -p tcp --dport 80  -m state --state NEW,ESTABLISHED -j ACCEPT;
   iptables -A wan_in  -p tcp --sport 443 -m state --state ESTABLISHED     -j ACCEPT;
   iptables -A wan_out -p tcp --dport 443 -m state --state NEW,ESTABLISHED -j ACCEPT;
-  /sbin/service iptables save;
+  /sbin/service iptables save;"
 
-  # ruby-build build environment;
-  yum install -y gcc bzip2 openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel"
+
+# ruby-build build environment;
+sudo yum install -y gcc bzip2 openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel
 
 
 # rbenv
