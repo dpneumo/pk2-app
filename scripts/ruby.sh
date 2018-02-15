@@ -19,10 +19,11 @@ if [ -d "$RBENV" ]; then
 else
   git clone https://github.com/rbenv/rbenv.git "$RBENV"
   cd ~/.rbenv && src/configure && make -C src
-  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
-  echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
-  source ~/.bash_profile
 fi
+
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+source ~/.bash_profile
 
 
 # ruby-build as rbenv plugin
