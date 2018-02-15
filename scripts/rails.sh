@@ -19,6 +19,7 @@ sudo yum install -y nodejs yarn
 
 # Clone the app
 cd ~
+if [ -d "pk2" ]; then rm -R pk2; fi
 git clone https://github.com/dpneumo/pk2.git
 
 cd pk2
