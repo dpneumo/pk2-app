@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Add HTTP & HTTPS Client rules - temporary for yum
 sudo sh -c "
   iptables -A wan_in  -p tcp --sport 80  -m state --state ESTABLISHED     -j ACCEPT;
@@ -11,27 +13,41 @@ sudo sh -c "
 
 
 # rbenv
-rm -rf ~/.rbenv && git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-cd ~/.rbenv && src/configure && make -C src
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
-echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
-source ~/.bash_profile
+RBENV='/home/loco/.rbenv'
+if [ -d "$RBENV" ]; then
+  echo "rbenv is already installed."
+else
+  git clone https://github.com/rbenv/rbenv.git "$RBENV"
+  cd ~/.rbenv && src/configure && make -C src
+  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+  echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+  source ~/.bash_profile
+fi
+
 
 # ruby-build as rbenv plugin
-rm -rf "$(rbenv root)"/plugins && mkdir -p "$(rbenv root)"/plugins
-git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+RUBYBUILD="$(rbenv root)"/plugins/ruby-build
+if [ -d "$RUBYBUILD" ]; then
+  echo "ruby-build plugin is already installed."
+else
+  mkdir -p "$(rbenv root)"/plugins
+  git clone https://github.com/rbenv/ruby-build.git "$RUBYBUILD"
+fi
+
 
 # Install Ruby 2.5.0
-if [ -e /home/loco/.rbenv/versions/2.5.0/bin/ruby ]
-  then
-    echo "Ruby 2.5.0 already installed by rbenv."
-  else
-    rbenv install 2.5.0
+RUBY250='/home/loco/.rbenv/versions/2.5.0/bin/ruby'
+if [ -e "$RUBY250" ]; then
+  echo "Ruby 2.5.0 already installed by rbenv."
+else
+  echo "Ruby will be installed."
+  rbenv install 2.5.0
 fi
 rbenv global 2.5.0
 rbenv rehash
 gem install bundler
 rbenv rehash
+
 
 # Remove HTTP & HTTPS Client rules
 sudo sh -c "
