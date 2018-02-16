@@ -42,6 +42,8 @@ SSH to loco@<server-ipaddress>
     ./scripts/ruby.sh  # Will ask for password for user 'loco' 1-2 times.
     ./scripts/rails.sh # Will ask for password for user 'loco' 1-2 times.
 
+    exit # Re-login to assure env vars are picked up
+
 ### config_server.sh
 
 This script does the initial setup of the server.
