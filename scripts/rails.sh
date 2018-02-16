@@ -9,21 +9,19 @@ sudo sh -c "
   /sbin/service iptables save;"
 
 # Development tools
-sudo yum -y groupinstall 'Development Tools'
+sudo yum -y group install 'Development Tools'
 sudo yum install -y gcc-c++ make sqlite-devel
 
 # https://yarnpkg.com/en/docs/install (Centos7)
 sudo wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo
 curl --silent --location https://rpm.nodesource.com/setup_6.x | sudo bash -
-sudo yum install -y nodejs yarn
+sudo yum -y install -y nodejs yarn
 
 # Install pg gem. Needs postgres client, dev files and libs.
 # These are installed in /usr/pgsql-10/
 # Useful: sudo yum list | grep postgresql
-sudo yum install https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-centos10-10-2.noarch.rpm
-sudo yum install postgresql10.x86_64
-sudo yum install postgresql10-devel.x86_64
-sudo yum install postgresql10-libs.x86_64
+sudo yum -y install https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-centos10-10-2.noarch.rpm
+sudo yum -y install postgresql10.x86_64 postgresql10-devel.x86_64 postgresql10-libs.x86_64
 gem install pg -- --with-pg-config=/usr/pgsql-10/bin/pg_config
 
 # Clone the app

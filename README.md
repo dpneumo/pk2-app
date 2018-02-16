@@ -25,7 +25,7 @@ SSH to root@<server-ipaddress>
 
     cd /opt && git clone https://github.com/dpneumo/pk2-app.git
 
-    cd pk2-app && chmod 755 **/*.sh
+    cd pk2-app && chmod 755 *.sh && chmod 755 **/*.sh
 
     git update-index --add --chmod=+x **/*.sh
     git commit -m "make our scripts executable and tell git about it"
