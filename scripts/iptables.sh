@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ################# iptables #################
 # Stop firewall(s)
 systemctl is-active --quiet firewalld && systemctl stop firewalld

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cd /opt/pk2-app
 
 git config --global user.email $GIT_USER_EMAIL

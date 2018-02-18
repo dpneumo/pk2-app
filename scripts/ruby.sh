@@ -57,8 +57,4 @@ sudo sh -c "
   iptables -D wan_out -p tcp --dport 80  -m state --state NEW,ESTABLISHED -j ACCEPT;
   iptables -D wan_in  -p tcp --sport 443 -m state --state ESTABLISHED     -j ACCEPT;
   iptables -D wan_out -p tcp --dport 443 -m state --state NEW,ESTABLISHED -j ACCEPT;
-  /sbin/service iptables save"
-
-### Notes: ###
-# If compilation fails with a readline error, specify the location of libreadline.so in the with-readline-dir build flag. For example:
-# RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/lib" rbenv install 2.4.0
+  /sbin/service iptables save;"
