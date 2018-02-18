@@ -37,6 +37,7 @@ SSH to root@<server-ipaddress>
 
 SSH to loco@<server-ipaddress>
 
+    sudo systemctl stop iptables
     sudo ./scripts/iptables.sh
     ./scripts/git.sh
     ./scripts/ruby.sh  # Will ask for password for user 'loco' 1-2 times.
