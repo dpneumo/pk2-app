@@ -88,9 +88,13 @@
 
 
  # LAN chains ###############################
- # HTTP Server
- iptables -A wan_in  -s $LAN_IP -p tcp --dport 3000 -m state --state NEW,ESTABLISHED -j ACCEPT
- iptables -A wan_out -d $LAN_IP -p tcp --sport 3000 -m state --state ESTABLISHED     -j ACCEPT
+ # HTTP Server (For testing)
+ #iptables -A lan_in  -s $LAN_IP -p tcp --dport 3000 -m state --state NEW,ESTABLISHED -j ACCEPT
+ #iptables -A lan_out -d $LAN_IP -p tcp --sport 3000 -m state --state ESTABLISHED     -j ACCEPT
+
+ # HTTP Server (for production)
+ iptables -A lan_in  -s $LAN_IP -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+ iptables -A lan_out -d $LAN_IP -p tcp --sport 80 -m state --state ESTABLISHED     -j ACCEPT
 
  # Postgresql client
  iptables -A lan_in  -s $LAN_IP -p tcp --sport 5432 -m state --state ESTABLISHED      -j ACCEPT
